@@ -1,7 +1,4 @@
 <?php
-    ini_set('display_errors', true);
-    error_reporting('~E_ALL');
-
     $myPeople = array (
         array(
             'name' => 'Charles Babbage',
@@ -30,7 +27,6 @@
         )
     );
 ?>
-
 <html doctype="HTML">
 <head>
     <title>PHP Templating Exmaple 1</title>
@@ -42,24 +38,24 @@
         <div class="row">
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                <?php if (count($myPeople)): ?>
-                    <table>
+            <?php if (count($myPeople)): ?>
+                <table class="table table-stripped">
+                    <tr>
+                        <th>Index</th>
+                        <th>Name</th>
+                        <th>Fields</th>
+                        <th>Contribution</th>
+                    </tr>
+                    <?php foreach($myPeople as $index => $person): ?>
                         <tr>
-                            <th>Index</th>
-                            <th>Name</th>
-                            <th>Fields</th>
-                            <th>Contribution</th>
+                            <td><?php echo $index ?></td>
+                            <td><?php echo ucfirst($person['name']) ?></td>
+                            <td><?php foreach($person['fields'] as $f){ echo ucfirst($f).', '; } ?></td>
+                            <td><?php echo $person['contribution'] ?></td>
                         </tr>
-                        <?php foreach($myPeople as $index => $person): ?>
-                            <tr>
-                                <td><?php echo $index ?></td>
-                                <td><?php echo ucfirst($person['name']) ?></td>
-                                <td><?php foreach($person['fields'] as $f){ echo ucfirst($f).', '; } ?></td>
-                                <td><?php echo $person['contribution'] ?></td>
-                            </tr>
-                        <?php endforeach?>
-                    </table>
-                <?php  endif; ?>
+                    <?php endforeach ?>
+                </table>
+            <?php  endif ?>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
         </div>
