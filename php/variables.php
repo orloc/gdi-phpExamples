@@ -98,7 +98,9 @@ $line = fgets($fileHandle);
 // echo the line
 echo "\n\nHere is the contents of files/test.txt: $line\n\n";
 
+// Constants 
 
+const myNewConstant
 
 // =================================================
 

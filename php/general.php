@@ -100,7 +100,11 @@ $a && $b;
 // Or -- TRUE if $a or $b are true
 $a || $b;
 
+// ** Type operators
 
+// InstanceOf
+
+$a instanceof $b;
 
 
 /* 
