@@ -3,7 +3,7 @@
     $myPeople = array (
         array(
             'name' => 'Charles Babbage',
-            'fields' => array('mathematics', 'engineering', 'computer science', 'political economy')
+            'fields' => array('mathematics', 'engineering', 'computer science', 'political economy'),
             'contribution' => 'Credited with the conept for the programable computer'
         ),
         array(
