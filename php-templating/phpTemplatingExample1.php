@@ -27,7 +27,8 @@
         )
     );
 ?>
-<html doctype="HTML">
+<!DOCTYPE html>
+<html>
 <head>
     <title>PHP Templating Exmaple 1</title>
 

@@ -28,7 +28,50 @@ class Person {
     // By having a public getter method, you can access your protected or private property
     public function getAge(){
         // this references the current class's scope
-        return $this->age;
+        return "I am {$this->age} years old!";
     }
 
+    public function setAge($age) { 
+        $this->age = $age;
+        return $this;
+    }
+
+    public function getEyeColor(){
+        return "My eyes are {$this->eye_color}";
+    }
+
+    public function setEyeColor($color){ 
+        $this->eye_color = $color;
+        return $this;
+    }
+
+    public function getName(){ 
+        return "My name is {$this->name}";
+    }
+
+    public function describe(){
+        echo $this->getName().' and '.
+            $this->getEyeColor().' and '.
+            $this->getAge();
+    }
 }
+
+
+
+// Now that we have out simple object we can write a small program
+
+
+// first we make a new object with the new keyword
+$jane = new Person('Jane');
+
+// because we return $this from all our setters, we have created
+// a 'fluent' interface for this object.  That means, we can chain
+// setters together.
+
+
+// lets set all of janes attributes
+$jane->setage(25)
+    ->setEyeColor('Green');
+
+//lets have jane tell us about herself
+$jane->describe();
