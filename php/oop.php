@@ -49,8 +49,8 @@ class Person {
         return "My name is {$this->name}";
     }
 
-    public function describe(){
-        echo $this->getName().' and '.
+    public function __tostring(){
+        return $this->getName().' and '.
             $this->getEyeColor().' and '.
             $this->getAge();
     }
@@ -73,5 +73,7 @@ $jane = new Person('Jane');
 $jane->setage(25)
     ->setEyeColor('Green');
 
-//lets have jane tell us about herself
-$jane->describe();
+
+// Now because we have a __tostring function we can just echo the object like a string.
+echo $jane;
+
