@@ -31,6 +31,14 @@ $dateTime = DateTime::createFromFormat('M/j/Y', 'April/01/2014');
 echo $dateTime->getTimestamp();
 
 
+// Lastely there are annonomous functions/ There are also called lambdas or closures
+// these have some unique properties and specific use cases
+$function = function($val){
+    echo $val;
+};
+
+$function('mewo');
+
 // Magic Methods are built in PHP methods that have special behavior.
 // ALL magic methods begin with __
 
