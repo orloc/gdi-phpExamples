@@ -31,7 +31,7 @@
 <head>
     <title>PHP Templating Exmaple 1</title>
 
-    <link type="text/css" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
 </head>
 <body>
     <div class="container-fluid">
