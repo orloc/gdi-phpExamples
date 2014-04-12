@@ -23,6 +23,7 @@ $baz = 1.2;
 
 //string
 $bez = 'foo';
+$bex = "bar\n";
 
 
 // =================================================
@@ -167,3 +168,7 @@ $_SESSION;
 
 // HTTP Cookies om nom nom...
 $_COOKIE;
+
+
+if (isset($_GET['var'])){
+}
