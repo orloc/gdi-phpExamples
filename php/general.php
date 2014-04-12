@@ -54,8 +54,9 @@ $a -= 2;
 $foo .= $bar;
 
 // Interpolation -  to put (something) between other things
-echo "$foo";
+echo "{$foo.$bar}";
 
+echo $foo.' to the '.$bar;
 
 /* 
  * Comparison Operators 
@@ -105,6 +106,13 @@ $a || $b;
 // InstanceOf
 
 $a instanceof $b;
+
+$person = new Person();
+function getPersonName($object) { 
+    if (!$person instanceof Person){
+        // do something
+    }
+}
 
 
 /* 

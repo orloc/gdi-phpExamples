@@ -51,7 +51,7 @@
                         <tr>
                             <td><?php echo $index ?></td>
                             <td><?php echo ucfirst($person['name']) ?></td>
-                            <td><?php foreach($person['fields'] as $f){ echo ucfirst($f).', '; } ?></td>
+                            <td><?php implode($person['fields'], ',') ?></td>
                             <td><?php echo $person['contribution'] ?></td>
                         </tr>
                     <?php endforeach ?>

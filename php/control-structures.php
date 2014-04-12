@@ -56,13 +56,18 @@ switch ($num) {
     case 4:
         echo '0-4';
         break;
+    case 5:
+        echo 'we have a winner';
+        break;
+    default: 
+        echo 'u lose';
 }
 
 
 // return - returns sopmething, or nothing from the current scope
 // will also end a script if the next highest scope is standard output
-function someFunction(){
-    return 'Hello World';
+function someFunction($param){
+    return 'Hello'.$param;
 }
 
 echo someFunction();

@@ -9,6 +9,8 @@ function add($a, $b) {
 }
 
 
+
+
 // You can type hint the parameters in a functions definition
 function arrayPop(array $array){
     $val = $array[count($array)];
