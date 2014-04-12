@@ -18,17 +18,17 @@ $dbh = new \PDO(
 
 // Insert
 
-$insertSql = "INSERT INTO tableName (column1, column2, column3) VALUES (:col1, :col2, :col3)";
+$insertSql = "INSERT INTO tableName (column1, column2, column3) VALUES (?, ?, ?)";
 $q = $dbh->prepare($insertSql);
 
 // you can also do parameter binding directly
 
-// $q->bindParam(":col1", 1, \PDO::PARAM_INT);
+// $q->bindParam(1, 1, \PDO::PARAM_INT);
 
 $q->execute(array(
-    ':col1' => 1,
-    ':col2' => 2,
-    ':col3' => 3
+     1,
+     2,
+     3
 ));
 
 
