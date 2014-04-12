@@ -4,7 +4,7 @@
 $conf = array(
     'type' => 'mysql',
     'host' => 'localhost',
-    'db_name' => 'gdi_examples',
+    'db_name' => 'gdi_blog',
     'user' => 'root',
     'pass' => 'password'
 );
@@ -18,7 +18,7 @@ $dbh = new \PDO(
 
 // Insert
 
-$insertSql = "INSERT INTO tableName (column1, column2, column3) VALUES (?, ?, ?)";
+$insertSql = "INSERT INTO posts (title, author, body) VALUES (?, ?, ?)";
 $q = $dbh->prepare($insertSql);
 
 // you can also do parameter binding directly
@@ -26,11 +26,10 @@ $q = $dbh->prepare($insertSql);
 // $q->bindParam(1, 1, \PDO::PARAM_INT);
 
 $q->execute(array(
-     1,
-     2,
-     3
+     'Post',
+     'Grant',
+     'This is just a test'
 ));
-
 
 
 // Lets find our value!
@@ -40,7 +39,7 @@ $val1 = 1;
 $val2 = 2;
 
 // our statment
-$query = "SELECT * FROM tableName WHERE column1=:gval1 AND column2=:val2";
+$query = "SELECT * FROM posts WHERE author=:val AND create_at<= CURRENT_TIMESTAMP()";
 
 $q2 = $dbh->prepare($query);
 
@@ -78,3 +77,4 @@ $result = $q4->execute(array($id));
 // Queries
 
 
+ */
