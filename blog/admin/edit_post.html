@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <title>Blog Posts</title>
+
+    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+
+    <style>
+        .content { 
+            margin-top: 5em;
+        }
+
+        h1 { 
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#php101Nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="php101Nav">
+            <ul class="nav navbar-nav">
+                <li class=""><a href="admin_view.html">Blog Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid content">
+        <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <h1 class="text-center">Add a Post</h1>
+                <form method="" action="" role="form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Title" value="Test Data"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Author" value="Test Name"/>
+                    </div>
+                    <div class="form-group">
+                        <p class="small"><i>Tags must be comma seperated</i></p>
+                        <input class="form-control" type="text" placeholder="Tags" value="One,Two,Three"/>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" placeholder="Content of your post...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan tempor tortor, malesuada accumsan orci pharetra sit amet. Sed eu vulputate odio. Donec convallis tortor vel diam porta volutpat. Vivamus dui velit, semper nec ante sed, euismod consequat nunc.</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-success">Add a new post!</button>
+                </form>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+        </div>
+    </div>
+</body>
+</html>
