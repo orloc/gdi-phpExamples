@@ -69,6 +69,11 @@ $result = $q3->execute(array($val1, $val2, $id));
 
 // DELETE
 
+$query = "DELETE FROM tableName WHERE id=?"
+$q4 = $dbh->prepare($query);
+$id = 1;
+
+$result = $q4->execute(array($id));
 
 // Queries
 
