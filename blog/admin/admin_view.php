@@ -2,14 +2,17 @@
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
+    session_start();
+
     $posts = include __DIR__.'/admin_controller.php';
 
-    if (count($_SESSION['gdi']['flashes']['error'])){
-        $errors = $_SESSION['gdi']['flashes']['error'];
-    }
-
-    if (count($_SESSION['gdi']['flashes']['success'])){
-        $success = $_SESSION['gdi']['flashes']['success'];
+    if (isset($_SESSION['gdi']['flashes'])){
+        if (count($_SESSION['gdi']['flashes']['error'])){
+            $errors = $_SESSION['gdi']['flashes']['error'];
+        }
+        if (count($_SESSION['gdi']['flashes']['success'])){
+            $success = $_SESSION['gdi']['flashes']['success'];
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -50,10 +53,19 @@
         <div class="row">
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+
+                <!-- Here we display our flash messages -->
+                <?php if (isset($success)): ?>
+                    <div class="alert alert-success">
+                    <?php echo $success ?>
+                    </div>
+                <?php elseif (isset($error)): ?>
+                    <div class="alert alert-danger">
+                    <?php echo $error ?>
+                    </div>
+                <?php endif ?>
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">   
-                        <!-- Here we display our flash messages -->
-<?php if (isset($success) || isset($error))
                         <!-- fill in my action and method remember GET vs POST -->
                         
                         <h1 class="text-center">Add a Post</h1>
