@@ -7,7 +7,7 @@ class Model {
         'host' => 'localhost',
         'db_name' => 'gdi_blog',
         'user' => 'root',
-        'pass' => ''
+        'pass' => 'password'
     );
 
     public $dbh;
@@ -38,7 +38,22 @@ class Model {
        ));
     }
 
-    public function update(){}
+    public function update($id, $title, $author, $body, $tags){
+
+        $query = "UPDATE {$this->table} 
+            SET title=?, author=?, body=?, tags=?
+            WHERE id=?";
+
+        $statement = $this->dbh->prepare($query);
+
+        return $statement->execute(array(
+            $title, 
+            $author, 
+            $body, 
+            $tags,
+            $id
+        ));
+    }
 
     public function retrieve(array $conditionals = array()){
         $query = "SELECT * FROM {$this->table}";
@@ -53,7 +68,9 @@ class Model {
             
             $statement = $this->dbh->prepare($query);
 
-            return $statement->execute(array_values($conditionals));
+            $statement->execute(array_values($conditionals));
+
+            return $statement;
         }
 
         
@@ -64,11 +81,11 @@ class Model {
     }
 
     public function delete($id){
-        $query = 'DELETE FROM '.$this->tableName.' WHERE id = ?';
+        $query = 'DELETE FROM '.$this->table.' WHERE id = ?';
 
         $statement = $this->dbh->prepare($query);
 
-        return $statment->execute(array($id));
+        return $statement->execute(array($id));
     }
 }
 

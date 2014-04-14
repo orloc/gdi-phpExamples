@@ -1,3 +1,11 @@
+<?php
+
+// Note we have started the session again
+session_start();
+
+$post = include __DIR__.'/edit_controller.php';
+
+?>
 <!DOCTYPE html>
 <html>
     <title>Blog Posts</title>
@@ -28,7 +36,7 @@
         </div>
         <div class="collapse navbar-collapse" id="php101Nav">
             <ul class="nav navbar-nav">
-                <li class=""><a href="admin_view.html">Blog Admin</a></li>
+                <li class=""><a href="admin_view.php">Blog Admin</a></li>
             </ul>
         </div>
     </nav>
@@ -37,19 +45,19 @@
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                 <h1 class="text-center">Edit Post</h1>
-                <form method="" action="" role="form">
+                <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" role="form">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Title" value="Test Data"/>
+                    <input class="form-control" name="title" type="text" placeholder="Title" value="<?php echo $post['title'] ?>"/>
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Author" value="Test Name"/>
+                        <input class="form-control" type="text" name="author" placeholder="Author" value="<?php echo $post['author'] ?>"/>
                     </div>
                     <div class="form-group">
                         <p class="small"><i>Tags must be comma seperated</i></p>
-                        <input class="form-control" type="text" placeholder="Tags" value="One,Two,Three"/>
+                        <input class="form-control" type="text" name="tags" placeholder="Tags" value="<?php echo $post['tags'] ?>"/>
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="10" placeholder="Content of your post...">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan tempor tortor, malesuada accumsan orci pharetra sit amet. Sed eu vulputate odio. Donec convallis tortor vel diam porta volutpat. Vivamus dui velit, semper nec ante sed, euismod consequat nunc.</textarea>
+                        <textarea class="form-control" rows="10" name="body" placeholder="Content of your post..."><?php echo $post['body'] ?></textarea>
                     </div>
                     <button type="submit" class="btn btn-block btn-success">Update</button>
                 </form>

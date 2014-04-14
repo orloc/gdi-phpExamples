@@ -16,13 +16,13 @@ if (isset($_GET['id'])){
     // If its a POST (we are submitting a form)
     if ($request_method === 'POST'){
         // call our update method with the information we need
-        if($db->update($postId,$_POST['title'], $_POST['author'], $_POST['body'], $_POST['tags'])){
-            $_SESSION['gdi']['flashes']['success'] = 'Successfully updated a post!';
+        if($db->delete($postId)){
+            $_SESSION['gdi']['flashes']['success'] = 'Successfully deleted a post!';
 
             // if we are successfull we want to redirec the user back to the origional page
             header('Location: admin_view.php');
         } else {
-            $_SESSION['gdi']['flashes']['error'] = 'We are unable to update your post';
+            $_SESSION['gdi']['flashes']['error'] = 'We are unable to delete your post';
         }
     } 
 
@@ -36,6 +36,6 @@ if (isset($_GET['id'])){
 } else { 
 
     // Remeber that flash message we made before? Lets use it again here!
-    $_SESSION['gdi']['flashes']['error'] = 'You must tell us a post to Edit!';
+    $_SESSION['gdi']['flashes']['error'] = 'You must tell us a post to delete!';
     header('Location: admin_view.php');
 }

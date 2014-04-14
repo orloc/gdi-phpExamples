@@ -1,11 +1,11 @@
 <?php
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-
+    // we need to start out session at the top of each page
     session_start();
 
+    // include our controller logic
     $posts = include __DIR__.'/admin_controller.php';
 
+    // check our session for our flash messages and assign them to variables
     if (isset($_SESSION['gdi']['flashes'])){
         if (count($_SESSION['gdi']['flashes']['error'])){
             $errors = $_SESSION['gdi']['flashes']['error'];
@@ -14,6 +14,9 @@
             $success = $_SESSION['gdi']['flashes']['success'];
         }
     }
+
+    // Clear our flash messages so we dont display them again
+    unset($_SESSION['gdi']['flashes']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,9 +62,9 @@
                     <div class="alert alert-success">
                     <?php echo $success ?>
                     </div>
-                <?php elseif (isset($error)): ?>
+                <?php elseif (isset($errors)): ?>
                     <div class="alert alert-danger">
-                    <?php echo $error ?>
+                    <?php echo $errors ?>
                     </div>
                 <?php endif ?>
                 <div class="row">
@@ -105,8 +108,8 @@
                                     <td><?php echo $p['title'] ?></td>
                                     <td><?php echo $p['author'] ?></td>
                                     <td><?php echo $p['tags'] ?></td>
-                                    <td><a href="/edit_post.html?id=<?php echo $p['id']?>" class="btn btn-block btn-info">Edit</a></td>
-                                    <td><a href="#" class="btn btn-block btn-danger">Delete</a></td>
+                                    <td><a href="edit_view.php?id=<?php echo $p['id']?>" class="btn btn-block btn-info">Edit</a></td>
+                                    <td><a href="delete_view.php?id=<?php echo $p['id'] ?>" class="btn btn-block btn-danger">Delete</a></td>
                                 </tr>
                             <?php endforeach ?>
                         </table> 
