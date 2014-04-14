@@ -7,7 +7,7 @@ class Model {
         'host' => 'localhost',
         'db_name' => 'gdi_blog',
         'user' => 'root',
-        'pass' => 'password'
+        'pass' => ''
     );
 
     public $dbh;
@@ -53,12 +53,14 @@ class Model {
             
             $statement = $this->dbh->prepare($query);
 
-            return $statment->execute(array_values($conditionals));
+            return $statement->execute(array_values($conditionals));
         }
 
         
         $statement = $this->dbh->prepare($query);
-        return $statment->execute();
+        $statement->execute();
+
+        return $statement;
     }
 
     public function delete($id){
@@ -70,14 +72,6 @@ class Model {
     }
 }
 
-
-
-
-$database = new Model();
-
-$result = $database->insert('new post', 'my name', 'some content', 'tags,1,2,4');
-
-$database->retrieve(array('id' => 1, 'author' => 'grant'));
 
 
 

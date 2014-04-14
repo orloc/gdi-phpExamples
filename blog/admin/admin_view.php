@@ -1,3 +1,17 @@
+<?php
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
+    $posts = include __DIR__.'/admin_controller.php';
+
+    if (count($_SESSION['gdi']['flashes']['error'])){
+        $errors = $_SESSION['gdi']['flashes']['error'];
+    }
+
+    if (count($_SESSION['gdi']['flashes']['success'])){
+        $success = $_SESSION['gdi']['flashes']['success'];
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,22 +51,25 @@
             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">   
+                        <!-- Here we display our flash messages -->
+<?php if (isset($success) || isset($error))
                         <!-- fill in my action and method remember GET vs POST -->
+                        
                         <h1 class="text-center">Add a Post</h1>
-                        <form method="" action="" role="form">
+                        <form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" role="form">
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Title"/>
+                                <input class="form-control" name="title" type="text" placeholder="Title"/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Author"/>
+                                <input class="form-control" name="author" type="text" placeholder="Author"/>
                             </div>
                             <div class="form-group">
                                 <p class="small"><i>Tags must be comma seperated</i></p>
-                                <input class="form-control" type="text" placeholder="Tags"/>
+                                <input class="form-control" name="tags" type="text" placeholder="Tags"/>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" type="text" placeholder="Content of your post..."></textarea>
+                                <textarea class="form-control" name="body" type="text" placeholder="Content of your post..."></textarea>
                             </div>
                             <button type="submit" class="btn btn-block btn-success">Add a new post!</button>
                         </form>
@@ -70,14 +87,16 @@
                                 <th></th>
                             </tr>
                             <!-- table body -->
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><a href="edit_post.html" class="btn btn-block btn-info">Edit</a></td>
-                                <td><a href="#" class="btn btn-block btn-danger">Delete</a></td>
-                            </tr>
+                            <?php foreach($posts as $p): ?>
+                                <tr>
+                                    <td><?php echo $p['id'] ?></td>
+                                    <td><?php echo $p['title'] ?></td>
+                                    <td><?php echo $p['author'] ?></td>
+                                    <td><?php echo $p['tags'] ?></td>
+                                    <td><a href="/edit_post.html?id=<?php echo $p['id']?>" class="btn btn-block btn-info">Edit</a></td>
+                                    <td><a href="#" class="btn btn-block btn-danger">Delete</a></td>
+                                </tr>
+                            <?php endforeach ?>
                         </table> 
                     </div>
                 </div>
